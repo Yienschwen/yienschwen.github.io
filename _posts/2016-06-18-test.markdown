@@ -1,0 +1,23 @@
+---
+layout: post
+title: test
+date: 2016-06-18 19:24:14 +0800
+categories: test
+---
+*test emphasis*  
+
+> To be or not to be, it's a question.  
+
+This should be on a new line;  
+
+{% highlight c++ %}
+#include <iostream>
+
+int main() {
+    std::cout << "Hello, world!" << std::endl;
+    return 0;
+}
+
+{% endhighlight %}
+这是一句中文测试。  
+これは日本語のテストです。  
