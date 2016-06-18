@@ -17,3 +17,4 @@ github_username:  Yienschwen
 
 # Build settings
 markdown: kramdown
+highligter: rouge
