@@ -1,0 +1,26 @@
+---
+layout: post
+title: MinGW-gcc error code 0xc000007b
+date: 2016-09-13 19:35:44 +0800
+categories: 
+---
+Recently I've been using `x86_64-mingw32-g++` included in `MinGW64` of `MSYS2`, on Windows 10. 
+But I've been bothered by error code `0xc000007b` for quite long time, when I tried to execute
+the excutable out of the `MSYS2` environment, even the source code is so simple as below:
+
+{% highlight c++ %}
+#include <iostream>
+int main() {
+    std::cout << "Hello, world!\n";
+    return 0;
+}
+{% endhighlight %}
+
+Solution:
+Use `depends` to check the `dll` dependency of your excutable. The error code `0xc000007b` usually 
+indicates that an `x86 dll` is loaded by `x86_64` executable. Since I included nothing than `iostream`,
+usually there's issue with the standard library, which is implemented in `libstdc++-6.dll` of `c++` and
+`libgcc_s_sjlj-1.dll` of `c`. In my situation, my `libstdc++-6.dll`, which is included by `GTK#` is `x86`.
+  
+If you cares portablitiy a lot, you may append `-static` to your compiling command, to let `g++` to link
+library statically as many as possible.   
